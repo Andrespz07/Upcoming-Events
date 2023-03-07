@@ -18,8 +18,9 @@ onBeforeMount(async () => {
 <template>
   <Header></Header>
   <div id="RecomendadosContainer">
-    <h2>Nuestros recomendados</h2>
-    <CloseSession></CloseSession>
+    <div id="TitleAndButton">
+    <h2>Nuestros recomendados:</h2>
+    <div id="ContainerButton"><CloseSession></CloseSession></div></div>
     <div class="eventosRecomendados">
       <CardsRecomendados v-for="event in store.EventsRecommended" :event="event"></CardsRecomendados>
     </div>
@@ -39,13 +40,25 @@ onBeforeMount(async () => {
 
 * {
   font-family: Dosis;
+  #TitleAndButton{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2vw;
+  #ContainerButton{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 24vh;
+    margin-bottom: 3vh
+  }}
 
   h2 {
     color: $Blue;
+    
     margin-top: 40px;
     margin-left: 8%;
-    margin-bottom: 20px;
+    
     font-weight: 700;
+    
   }
 
   .eventosRecomendados {
@@ -66,6 +79,9 @@ onBeforeMount(async () => {
     .eventosRecomendados {
       grid-template-columns: 1fr 1fr 1fr;
     }
+    footer{
+      display: none;
+    }
   }
   @media (max-width:1000px) {
     .eventosRecomendados {
@@ -74,12 +90,18 @@ onBeforeMount(async () => {
     .eventos {
       grid-template-columns: 1fr;
     }
+    footer{
+      display: none;
+    }
   }
 
 
   @media (max-width:700px) {
     .eventosRecomendados {
       grid-template-columns: 1fr;
+    }
+    footer{
+      display: none;
     }
   }
 }
